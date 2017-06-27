@@ -10,7 +10,7 @@ public class No02_4 {
 	
 	private No02_4(){}
 	
-	private static No02_4 instance=null;
+	private static volatile No02_4 instance=null;
 	
 	public static No02_4 getInstance(){
 		if(instance==null){
