@@ -1,5 +1,4 @@
-package com.lewiszlw.chapter2;
-
+package com.lewiszlw.chapter2; 
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -76,6 +75,13 @@ public class No05 {
 		System.out.println();
 	}
 
+	public void printListReversingly4(ListNode head){
+		if(head==null){
+			return;
+		}
+		printListReversingly4(head.next);
+		System.out.print(head.val+" ");
+	}
 	
 	@Test
 	public void test1(){
@@ -112,6 +118,18 @@ public class No05 {
 		printListReversingly3(head2);
 		ListNode head3=ListNode.arrayToList(arr3);
 		printListReversingly3(head3);
+	}
+	@Test
+	public void test4(){
+		int[] arr1={1,2,4,5,7,9};
+		int[] arr2={};
+		int[] arr3={1};
+		ListNode head1=ListNode.arrayToList(arr1);
+		printListReversingly4(head1);
+		ListNode head2=ListNode.arrayToList(arr2);
+		printListReversingly4(head2);
+		ListNode head3=ListNode.arrayToList(arr3);
+		printListReversingly4(head3);
 	}
 	
 	
