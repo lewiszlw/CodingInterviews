@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author lewiszlw
  *
  */
-public class No04 {
+public class _04ReplaceBlank {
 	public String replaceBlank1(String str){
 		if(str==""||str==null){
 			return str;

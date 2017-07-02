@@ -9,7 +9,7 @@ import org.junit.Test;
  * @author lewiszlw
  *
  */
-public class No05 {
+public class _05PrintListReversingly {
 	//遍历链表，将每个节点的值放到数组中,然后从尾到头遍历数组并打印
 	public void printListReversingly1(ListNode head){
 		if(head==null){

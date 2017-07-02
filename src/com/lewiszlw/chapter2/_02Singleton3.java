@@ -6,13 +6,13 @@ package com.lewiszlw.chapter2;
  *	单线程
  *	缺点是该类加载的时候就会直接new 一个静态对象出来，当系统中这样的类较多时，会使得启动速度变慢
  */
-public class No02_3 {
+public class _02Singleton3 {
 	
-	private No02_3(){}
+	private _02Singleton3(){}
 	
-	private static No02_3 instance=new No02_3();
+	private static _02Singleton3 instance=new _02Singleton3();
 	
-	public static No02_3 getInstance(){
+	public static _02Singleton3 getInstance(){
 		return instance;
 	}
 

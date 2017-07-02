@@ -8,7 +8,7 @@ import org.junit.Test;
  * @author lewiszlw
  *
  */
-public class No03 {
+public class _03FindInPartiallySortedMatrix {
 	public boolean find(int[][] arr, int num) {
 		if (arr == null) {
 			return false;

@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author lewiszlw
  *	不含重复数字
  */
-public class No06 {
+public class _06ConstructBinaryTree {
 	public BinaryTreeNode constructTree(int[] preOrder, int[] inOrder){
 		if(preOrder==null||inOrder==null){
 			return null;

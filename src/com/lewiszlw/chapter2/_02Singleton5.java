@@ -5,17 +5,17 @@ package com.lewiszlw.chapter2;
  * @author lewiszlw
  *	多线程环境——利用静态内部类
  */
-public class No02_5 {
+public class _02Singleton5 {
 	
-	private No02_5(){}
+	private _02Singleton5(){}
 	
-	private static No02_5 getInstance(){
+	private static _02Singleton5 getInstance(){
 		return Singleton.instance;
 	}
 	
 	static class Singleton{
 		private Singleton(){}
-		private static final No02_5 instance=new No02_5();
+		private static final _02Singleton5 instance=new _02Singleton5();
 	}
 
 }
