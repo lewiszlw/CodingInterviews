@@ -72,6 +72,40 @@ public class _12PrintOneToMaxOfNDigits {
 		System.out.println();
 	}
 	
+
+	//全排列递归解决
+	public void printOneToMaxOfNDigits1(int n){
+		if(n<=0){
+			return;
+		}
+
+		//声明并初始化
+		char[] number=new char[n];
+		for(int i=0;i<number.length;i++){
+			number[i]='0';
+		}
+
+		//第一位0~9排列
+		for(int i=0;i<10;i++){
+			number[0]=(char)(i+'0');
+			printOneToMaxOfDigitsRecursively(number, 0);
+		}
+	}
+	
+	public void printOneToMaxOfDigitsRecursively(char[] number, int index){
+		//当全排列到最后一位确定时递归结束
+		if(index==number.length-1){
+			printNumber(number);
+			return;
+		}
+		//每一位循环0~9全排列
+		//number全0由打印函数printNumber剔除掉
+		for(int i=0;i<10;i++){
+			number[index+1]=(char)(i+'0');
+			printOneToMaxOfDigitsRecursively(number, index+1);
+		}
+	}
+
 	@Test
 	public void testIncrement(){
 		char[] num={'8','9','9'};
@@ -99,6 +133,11 @@ public class _12PrintOneToMaxOfNDigits {
 			System.out.println(i);
 		}
 */
-		printOneToMaxOfNDigits(3);
+		printOneToMaxOfNDigits1(3);
+	}
+	
+	@Test
+	public void testPrintOneToMaxOfNDigits1() {
+		printOneToMaxOfNDigits1(3);
 	}
 }
