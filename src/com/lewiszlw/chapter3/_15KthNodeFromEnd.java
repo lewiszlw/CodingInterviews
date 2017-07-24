@@ -14,6 +14,9 @@ public class _15KthNodeFromEnd {
 			return null;
 		}
 		int len=getLengthOfList(head);
+		if(k>len){
+			return null;
+		}
 		int index=len-k+1;
 		ListNode p=head;
 		for(int i=1;i<index;i++){
@@ -31,11 +34,40 @@ public class _15KthNodeFromEnd {
 		return len;
 	}
 	
+	//双指针间隔k-1
+	public ListNode findKthToTail1(ListNode head, int k){
+		if(head==null||k<=0){
+			return null;
+		}
+		
+		//初始化两个相隔k-1的指针，注意长度不足k
+		ListNode p1=head;
+		for(int i=0;i<k;i++){
+			if(p1!=null){
+				p1=p1.next;
+			}else {
+				return null;
+			}
+		}
+		ListNode p2=head;
+		
+		while(p1!=null){
+			p1=p1.next;
+			p2=p2.next;
+		}
+		return p2;
+	}
+	
 	@Test
 	public void test(){
 		int[] arr={1,2,3,4,5,6};
 		ListNode head=ListNode.arrayToList(arr);
 		System.out.println(findKthToTail(head, 3).val);
+		System.out.println(findKthToTail(head, -1));
+		System.out.println(findKthToTail(head, 7));
+		System.out.println(findKthToTail1(head, 3).val);
+		System.out.println(findKthToTail1(head, -1));
+		System.out.println(findKthToTail1(head, 7));
 	}
 
 }
