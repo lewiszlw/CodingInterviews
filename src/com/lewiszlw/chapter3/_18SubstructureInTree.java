@@ -3,7 +3,7 @@ package com.lewiszlw.chapter3;
 import org.junit.Test;
 
 /**
- * 树的子结构
+ * 面试题18：树的子结构
  * @author lewiszlw
  *	判断二叉树B是不是二叉树A的子结构
  */
