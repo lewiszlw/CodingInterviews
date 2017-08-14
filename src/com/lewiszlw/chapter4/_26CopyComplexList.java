@@ -16,7 +16,9 @@ public class _26CopyComplexList {
 	 * 哈希表
 	 */
 	public ComplexListNode clone(ComplexListNode head){
-
+		if(head==null){
+			return null;
+		}
 		//key为N'，value为N
 		Map<ComplexListNode, ComplexListNode> map1=new HashMap<>();
 		//key为N，value为N'
@@ -45,7 +47,63 @@ public class _26CopyComplexList {
 		
 		return preHead.next;
 	}
+	
+	
 
+	/*
+	 * 每个节点后面跟上复制的节点
+	 * A -> B -> C
+	 * A -> A' -> B -> B' -> C -> C'
+	 */
+	public ComplexListNode clone1(ComplexListNode head){
+		if(head==null){
+			return null;
+		}
+		//第一步：根据原始链表每个结点N创建对应的N'
+		cloneNodes(head);
+
+		//第二步：设置复制出来的结点的sibling
+		connectSiblingNodes(head);
+		
+		//第三步：将长链表拆分成两个链表
+		return reconnectNodes(head);
+	}
+	public void cloneNodes(ComplexListNode head){
+		ComplexListNode p=head;
+		while(p!=null){
+			ComplexListNode next=p.next;
+			ComplexListNode node=new ComplexListNode(p.val);
+			p.next=node;
+			node.next=next;
+			p=next;
+		}
+	}
+	public void connectSiblingNodes(ComplexListNode head){
+		ComplexListNode p=head;
+		int count=0;
+		while(p!=null){
+			//每隔一个判断
+			if(p.sibling!=null && (count&1)==0){
+				p.next.sibling=p.sibling.next;
+			}
+			p=p.next;
+			count++;
+		}
+	}
+	public ComplexListNode reconnectNodes(ComplexListNode head){
+		ComplexListNode newHead=head.next;
+		ComplexListNode pre=head;
+		ComplexListNode p=pre.next;
+		while(p!=null){
+			pre.next=p.next;
+			pre=p;
+			p=p.next;
+		}
+		return newHead;
+	}
+	
+
+	
 	
 
 	@Test
@@ -64,6 +122,7 @@ public class _26CopyComplexList {
 		node4.sibling=node2;
 		
 		ComplexListNode head=clone(node1);
+//		ComplexListNode head=clone1(node1);
 		System.out.println(head.val);
 		System.out.println(head.next.val);
 		System.out.println(head.next.next.val);
@@ -82,7 +141,7 @@ public class _26CopyComplexList {
 	
 	
 	/**
-	 * 复制链表结点
+	 * 复制链表结点类
 	 * @author lewiszlw
 	 */
 	class ComplexListNode{
